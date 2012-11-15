@@ -1,0 +1,14 @@
+global:
+  env:
+    - PAAS: pagodabox
+web1:
+  name: wp-web
+  shared_writable_dirs:
+    - wp-content/cache/
+    - wp-content/uploads/
+  after_build:
+    - "mv pagoda/wp-config.php wp-config.php"
+    - "mv pagoda/index-with-redis.php index.php"
+    - "rm -R pagoda"
+db1:
+  name: wp-db
