@@ -14,25 +14,43 @@
  * @package WordPress
  */
 
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
+// ** Path adjustment for git submodule ** //
+define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/wordpress');
+define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME']);
+// ** Path adjustment for local wp-content dir ** //
+define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content');
+define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
 
-/** MySQL database username */
-define('DB_USER', 'username_here');
+if(isset($_SERVER['PAAS']) && $_SERVER['PASS'] == 'pagodabox'){
+	
+  define('DISALLOW_FILE_MODS', true); // ** pagodabox is read online
 
-/** MySQL database password */
-define('DB_PASSWORD', 'password_here');
+  define('DB_NAME', $_SERVER['DB1_NAME']);
+  define('DB_USER', $_SERVER['DB1_USER']);
+  define('DB_PASSWORD', $_SERVER['DB1_PASS']);
+  define('DB_HOST', $_SERVER['DB1_HOST']);
 
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
+} 
+else {
+  // ** MySQL settings - You can get this info from your web host ** //
+  /** The name of the database for WordPress */
+  define('DB_NAME', 'database_name_here');
 
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+  /** MySQL database username */
+  define('DB_USER', 'username_here');
 
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+  /** MySQL database password */
+  define('DB_PASSWORD', 'password_here');
 
+  /** MySQL hostname */
+  define('DB_HOST', 'localhost');
+
+  /** Database Charset to use in creating database tables. */
+  define('DB_CHARSET', 'utf8');
+
+  /** The Database Collate type. Don't change this if in doubt. */
+  define('DB_COLLATE', '');
+}
 /**#@+
  * Authentication Unique Keys and Salts.
  *
