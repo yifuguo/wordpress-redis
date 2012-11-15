@@ -74,14 +74,14 @@ if ($redis->hexists($dkey, $ukey) && !$loggedin && !$submit && !strpos($url, '/f
 // if a comment was submitted or clear page cache request was made delete cache of page
 } else if ($submit || substr($_SERVER['REQUEST_URI'], -4) == '?r=y') {
 
-    require('./wp-blog-header.php');
+    require('./wordpress/wp-blog-header.php');
     $redis->hdel($dkey, $ukey);
     $msg = 'cache of page deleted';
 
 // delete entire cache, works only if logged in
 } else if ($loggedin && substr($_SERVER['REQUEST_URI'], -4) == '?c=y') {
 
-    require('./wp-blog-header.php');
+    require('./wordpress/wp-blog-header.php');
     if ($redis->exists($dkey)) {
         $redis->del($dkey);
         $msg = 'domain cache flushed';
@@ -92,7 +92,7 @@ if ($redis->hexists($dkey, $ukey) && !$loggedin && !$submit && !strpos($url, '/f
 // if logged in don't cache anything
 } else if ($loggedin) {
 
-    require('./wp-blog-header.php');
+    require('./wordpress/wp-blog-header.php');
     $msg = 'not cached';
 
 // cache the page
@@ -101,7 +101,7 @@ if ($redis->hexists($dkey, $ukey) && !$loggedin && !$submit && !strpos($url, '/f
     // turn on output buffering
     ob_start();
 
-    require('./wp-blog-header.php');
+    require('./wordpress/wp-blog-header.php');
 
     // get contents of output buffer
     $html = ob_get_contents();
