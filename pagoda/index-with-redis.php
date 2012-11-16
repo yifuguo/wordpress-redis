@@ -47,7 +47,10 @@ define('WP_USE_THEMES', true);
 
 // init predis
 include("./predis.php");
-$redis = new Predis\Client('');
+$redis = new Predis\Client('array(
+    'host'   => $_SERVER['CACHE1_HOST'],
+    'port'   => $_SERVER['CACHE1_PORT'],
+));
 
 // init vars
 $domain = $_SERVER['HTTP_HOST'];
