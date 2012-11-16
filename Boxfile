@@ -9,6 +9,7 @@ web1:
   after_build:
     - "mv pagoda/wp-config.php wp-config.php"
     - "mv pagoda/index-with-redis.php index.php"
+    - "mv pagoda/predis.php predis.php"
     - "rm -R pagoda"
 db1:
   name: wp-db
