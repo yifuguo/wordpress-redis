@@ -46,7 +46,7 @@ if ($cf) {
 define('WP_USE_THEMES', true);
 
 // init predis
-include("predis.php");
+include("./predis.php");
 $redis = new Predis\Client('');
 
 // init vars
