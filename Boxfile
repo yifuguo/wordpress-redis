@@ -1,6 +1,3 @@
-global:
-  env:
-    - PAAS: pagodabox
 web1:
   name: wp-web
   shared_writable_dirs:
