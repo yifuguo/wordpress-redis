@@ -10,6 +10,7 @@ web1:
     - "rm -R pagoda"
   php_extensions:
     - redis
+    - mysql
   php_session_save_handler: redis
   php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
 db1:
