@@ -8,6 +8,10 @@ web1:
     - "mv pagoda/index-with-redis.php index.php"
     - "mv pagoda/predis.php predis.php"
     - "rm -R pagoda"
+  php_extensions:
+    - redis
+  php_session_save_handler: redis
+  php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
 db1:
   name: wp-db
 cache1:
