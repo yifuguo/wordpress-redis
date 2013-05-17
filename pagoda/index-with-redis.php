@@ -30,7 +30,7 @@
  
 // change vars here
 $debug = 0;			// set to 1 if you wish to see execution time and cache actions
-$display_powered_by_redis = 0;  // set to 1 if you want to display a powered by redis message with execution time, see below
+$display_powered_by_redis = 1;  // set to 1 if you want to display a powered by redis message with execution time, see below
  
 $start = microtime();   // start timing page exec
  
