@@ -1,16 +1,25 @@
 web1:
   name: wp-web
+  php_version: 5.4.14
+  document_root: wordpress/
   shared_writable_dirs:
-    - wp-content/cache/
-    - wp-content/uploads/
+    - wordpress/wp-content/
   after_build:
-    - "mv pagoda/wp-config.php wp-config.php"
-    - "mv pagoda/index-with-redis.php index.php"
-    - "mv pagoda/predis.php predis.php"
-    - "rm -R pagoda"
+    - "cp -rv pagoda/. wordpress/"
+    - "cp -rv wordpress/wp-content/ pagoda/"
+  before_deploy:
+    - "cp -rv pagoda/wp-content/. wordpress/wp-content/"
+#    - "cp -rv pagoda/predis/. wordpress/predis/"
   php_extensions:
     - redis
     - mysql
+    - gd
+    - mbstring
+    - exif
+    - iconv
+    - mcrypt
+    - zip
+    - curl
   php_session_save_handler: redis
   php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
 db1:

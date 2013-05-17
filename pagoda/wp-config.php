@@ -14,15 +14,6 @@
  * @package WordPress
  */
 
-// ** Path adjustment for git submodule ** //
-define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/wordpress');
-define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME']);
-// ** Path adjustment for local wp-content dir ** //
-define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content');
-define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
-
-  define('DISALLOW_FILE_MODS', true); // ** pagodabox is read online
-
   define('DB_NAME', $_SERVER['DB1_NAME']);
   define('DB_USER', $_SERVER['DB1_USER']);
   define('DB_PASSWORD', $_SERVER['DB1_PASS']);
