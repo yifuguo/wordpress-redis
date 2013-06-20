@@ -22,6 +22,8 @@ web1:
     - curl
   php_session_save_handler: redis
   php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
+  php_post_max_size: "40M"
+  php_upload_max_filesize: "40M"
 db1:
   name: wp-db
 cache1:
